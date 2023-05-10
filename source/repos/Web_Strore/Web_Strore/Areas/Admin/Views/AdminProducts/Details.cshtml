@@ -1,0 +1,144 @@
+﻿@model Web_Strore.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin sản phẩm : @Model.ProductName</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td class="text-dark font-weight-semibold">@Model.ProductId</td>
+                    </tr>
+                    <tr>
+                        <td>Tên quyền sản phẩm</td>
+                        <td>@Model.ProductName</td>
+                    </tr>
+                    <tr>
+                        <td>Mô tả ngắn</td>
+                        <td>@Model.ShortDesc</td>
+                    </tr>
+                    <tr>
+                        <td>Giá</td>
+                        <td>@Model.Price</td>
+                    </tr>
+                    <tr>
+                        <td>Discount</td>
+                        <td>@Model.Discount</td>
+                    </tr>
+                    <tr>
+                        <td>Tên danh mục</td>
+                        <td>@Model.Cat.CatName</td>
+                    </tr>
+                    <tr>
+                        <td>DateCreated</td>
+                        <td>@Model.DateCreated</td>
+                    </tr>
+                    <tr>
+                        <td>Mô tả</td>
+                        <td>@Model.DateModified</td>
+                    </tr>
+                    <tr>
+                        <td>Title</td>
+                        <td>@Model.Title</td>
+                    </tr>
+                    <tr>
+                        <td>MetaDesc</td>
+                        <td>@Model.MetaDesc</td>
+                    </tr>
+                    <tr>
+                        <td>MetaKey</td>
+                        <td>@Model.MetaKey</td>
+                    </tr>
+                    <tr>
+                        <td>Tags</td>
+                        <td>@Model.Tags</td>
+                    </tr>
+                    <tr>
+                        <td>Ảnh đại diện</td>
+                        <td>
+                            <img width="200" height="200" src="~/images//products/@Model.Thumb" alt="@Model.Title" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Active</td>
+
+                        <td>
+                            @if (Model.Active)
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-1" checked="">
+                                    <label for="Active"></label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-1" >
+                                    <label for="Active"></label>
+                                </div>
+                            }
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>HomeFlag</td>
+
+                        <td>
+                            @if (Model.HomeFlag)
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-1" checked="">
+                                    
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-1">
+                                    <label for="HomeFlag"></label>
+                                </div>
+                            }
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>BestSellers</td>
+
+                        <td>
+                            @if (Model.BestSellers)
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-1" checked="">
+                                    
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="switch m-r-10">
+                                    <input type="checkbox" id="switch-1">
+                                    <label for="BestSellers"></label>
+                                </div>
+                            }
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Mô tả</td>
+                        <td>@Model.Description</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

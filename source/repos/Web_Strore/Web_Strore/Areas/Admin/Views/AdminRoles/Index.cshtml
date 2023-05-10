@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Web_Strore.Models.Role>
+
+@{
+    ViewData["Title"] = "Quản lý quyền truy cập";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Quản lý quyền truy cập</h1>
+
+<p>
+    <a  class="btn btn-secondary btn-tone m-r-5" asp-action="Create">Thêm</a>
+</p>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Basic Info</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    @if (Model != null)
+                    {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>ID</td>
+                            <td class="text-dark font-weight-semibold">@item.RoleId</td>
+                        </tr>
+                    <tr>
+                        <td>Tên truy cập</td>
+                        <td>@item.RoleName</td>
+                    </tr>
+                    <tr>
+                        <td>Mô tả</td>
+                        <td>@item.Description</td>
+                    </tr>
+
+                    <tr>
+                        <td>#</td>
+                        <td>
+                            <a  class="btn btn-primary btn-tone m-r-5" asp-action="Edit" asp-route-id="@item.RoleId">Edit</a> |
+                            <a class="btn btn-secondary btn-tone m-r-5" asp-action="Details" asp-route-id="@item.RoleId">Details</a> |
+                            <a  class="btn btn-danger btn-tone m-r-5"asp-action="Delete" asp-route-id="@item.RoleId">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

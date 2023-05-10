@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Web_Strore.Models.Category>
+
+
+@{
+   
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Categories" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <span class="breadcrumb-item active">Quản lý danh mục </span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row m-b-30">
+            <div class="col-lg-8">
+                <div class="d-md-flex">
+                    <div class="m-b-10 m-r-15">
+                        <select id="txtCatID" name="txtCatID" class="custom-select" style="min-width: 180px;" asp-items="ViewBag.DanhMuc">
+                            <option disable selected>Chọn Danh Mục</option>
+                        </select>
+                    </div>
+                    <div class="m-b-10">
+                        <input id="search" name="keyword" type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-right">
+                <a class="btn btn-primary" asp-controller="AdminCategories" asp-action="Create">
+                    <i class="anticon anticon-plus-circle m-r-5"></i>
+                    <span>Add Product</span>
+                </a>
+
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover e-commerce-table">
+                <thead>
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Tên danh mục</th>
+                        <th>Description</th>
+                        <th>Thumb</th>
+                        <th>Alias</th>
+                     
+                    </tr>
+                </thead>
+                <tbody @*id="recodes_table"*@>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.CatId
+                                </td>
+                                <td>@item.CatName</td>
+                                <td>@item.Description</td>
+                                <td>@item.Thumb</td>
+                                <td>@item.Alias</td>
+                                
+                                <td class="text-right">
+                                    <a class="btn btn-primary btn-tone m-r-5" asp-action="Edit" asp-route-id="@item.CatId">Edit</a> |
+                                    <a class="btn btn-secondary btn-tone m-r-5" asp-action="Details" asp-route-id="@item.CatId">Details</a> |
+                                    <a class="btn btn-danger btn-tone m-r-5" asp-action="Delete" asp-route-id="@item.CatId">Delete</a>
+                                </td>
+
+                            </tr>
+
+                        }
+                    }
+                </tbody>
+            </table>
+      
+        </div>
+    </div>
+</div>
